@@ -21,6 +21,7 @@
 
 #include <stdlib.h>
 #include <ruby.h>
+#include <ruby/encoding.h>
 #include <idna.h>
 #include "idn.h"
 
@@ -133,7 +134,12 @@ static VALUE toUnicode(int argc, VALUE argv[], VALUE self)
     return Qnil;
   }
 
-  retv = rb_str_new2(buf);
+  if (flags == 0x0000) {
+    retv = rb_enc_str_new(buf, strlen(buf), rb_utf8_encoding());
+  } else {
+    retv = rb_str_new2(buf);
+  }
+
   xfree(buf);
   return retv;
 }

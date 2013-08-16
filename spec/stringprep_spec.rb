@@ -35,13 +35,13 @@ describe Stringprep do
     end
   end
 
-  #it 'should pass profile_STRINGPREP_INVALID' do
-  #  TESTCASES_STRINGPREP_INVALID.each do |key, val|
-  #    assert_raise(Stringprep::StringprepError, "TestCase #{key} failed") do
-  #      Stringprep.with_profile(val[0], val[1])
-  #    end
-  #  end
-  #end
+  it 'should pass profile_STRINGPREP_INVALID' do
+    TESTCASES_STRINGPREP_INVALID.each do |key, val|
+      lambda do
+        Stringprep.with_profile(val[0], val[1]).should raise_error(StringprepError)
+      end
+    end
+  end
 
   it 'should pass nfkc_normalize_NFKC' do
     TESTCASES_NFKC.each do |key, val|

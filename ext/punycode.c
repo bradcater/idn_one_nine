@@ -22,6 +22,7 @@
 
 #include <stdlib.h>
 #include <ruby.h>
+#include <ruby/encoding.h>
 #include <stringprep.h>
 #include <punycode.h>
 #include "idn.h"
@@ -134,9 +135,12 @@ static VALUE decode(VALUE self, VALUE str)
   }
 
   buf = stringprep_ucs4_to_utf8(ustr, len, NULL, &len);
-  retv = rb_str_new(buf, len);
+
+  retv = rb_external_str_new_with_enc(buf, len, rb_utf8_encoding());
+
   xfree(ustr);
   xfree(buf);
+
   return retv;
 }
 

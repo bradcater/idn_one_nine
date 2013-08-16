@@ -184,21 +184,21 @@ describe Idna do
     end
   end
 
-  #it 'should pass toASCII_UNASSIGNED_NOT_ALLOWED' do
-  #  TESTCASES_UNASSIGNED.each do |key, val|
-  #    assert_raise(Idna::IdnaError, "TestCase #{key} failed") do
-  #      Idna.toASCII(val[0])
-  #    end
-  #  end
-  #end
+  it 'should pass toASCII_UNASSIGNED_NOT_ALLOWED' do
+    TESTCASES_UNASSIGNED.each do |key, val|
+      lambda do
+        Idna.toASCII(val[0]).should raise_error(IdnaError)
+      end
+    end
+  end
 
-  #it 'should pass toASCII_STD3_USED' do
-  #  TESTCASES_STD3.each do |key, val|
-  #    assert_raise(Idna::IdnaError, "TestCase #{key} failed") do
-  #      Idna.toASCII(val[0], IDN::Idna::USE_STD3_ASCII_RULES)
-  #    end
-  #  end
-  #end
+  it 'should pass toASCII_STD3_USED' do
+    TESTCASES_STD3.each do |key, val|
+      lambda do
+        Idna.toASCII(val[0], IDN::Idna::USE_STD3_ASCII_RULES).should raie_error(IdnaError)
+      end
+    end
+  end
 
   it 'should pass toASCII_STD3_NOT_USED' do
     TESTCASES_STD3.each do |key, val|
@@ -214,19 +214,21 @@ describe Idna do
     end
   end
 
-  #it 'should pass toUnicode_UNASSIGNED_ALLOWED' do
-  #  TESTCASES_UNASSIGNED.each do |key, val|
-  #    rc = Idna.toUnicode(val[1], IDN::Idna::ALLOW_UNASSIGNED)
-  #    assert_equal(val[0], rc, "TestCase #{key} failed")
-  #  end
-  #end
+  it 'should pass toUnicode_UNASSIGNED_ALLOWED' do
+    TESTCASES_UNASSIGNED.each do |key, val|
+      lambda do
+        Idna.toUnicode(val[1], IDN::Idna::ALLOW_UNASSIGNED).should raise_error(IdnaError)
+      end
+    end
+  end
 
-  #it 'should pass toUnicode_UNASSIGNED_NOT_ALLOWED' do
-  #  TESTCASES_UNASSIGNED.each do |key, val|
-  #    rc = Idna.toUnicode(val[1])
-  #    assert_equal(val[1], rc, "TestCase #{key} failed")
-  #  end
-  #end
+  it 'should pass toUnicode_UNASSIGNED_NOT_ALLOWED' do
+    TESTCASES_UNASSIGNED.each do |key, val|
+      lambda do
+        Idna.toUnicode(val[1]).should raise_error(IdnaError)
+      end
+    end
+  end
 
   it 'should pass toUnicode_STD3_USED' do
     TESTCASES_STD3.each do |key, val|

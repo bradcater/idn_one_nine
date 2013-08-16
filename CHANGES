@@ -1,3 +1,8 @@
+Changes with idn_one_nine (2013-08-15)
+
+* This is purely a test to see if I can get native IDN support. Use of this gem
+  is not recommended at this time.
+
 Changes with IDN 0.0.2 (2006-02-11)
 
 * Remove excessive xfree() if a call to stringprep_profile() returns an

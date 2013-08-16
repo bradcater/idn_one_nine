@@ -15,7 +15,7 @@ end
 
 gemspec = Gem::Specification.load('idn_one_nine.gemspec')
 Rake::ExtensionTask.new do |ext|
-  ext.name = 'idn_one_nine'
+  ext.name = 'idn'
   ext.ext_dir = 'ext'
   ext.lib_dir = 'lib'
   ext.gem_spec = gemspec

@@ -8,7 +8,7 @@ rescue LoadError
 end
 
 desc "idn_one_nine unit tests"
-RSpec::Core::RakeTask.new(:test) do |t|
+RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = "spec/*_spec.rb"
   t.verbose = true
 end
@@ -23,5 +23,4 @@ Rake::ExtensionTask.new do |ext|
   ext.cross_compile  = true
 end
 
-#task :default => [:compile, :test]
-task :default => :compile
+task :default => [:compile, :test]

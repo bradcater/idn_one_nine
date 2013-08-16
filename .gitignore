@@ -1,2 +1,4 @@
 lib/idn.so
 tmp/*
+*.swo
+*.swp
